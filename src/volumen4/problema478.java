@@ -22,9 +22,9 @@ public class problema478 { // casos de prueba y funcionamiento general bien pero
                 suma_poder+=poder_hechizos[i];
             }
             
-            int daño_enemigo = s.nextInt();
+            int daN = s.nextInt();
             
-            int busqueda = suma_poder - daño_enemigo;
+            int busqueda = suma_poder - daN;
             
             int num1 = 0;
             int num2 = 0;
