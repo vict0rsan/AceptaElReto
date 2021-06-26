@@ -2,7 +2,7 @@ package volumen6;
 import java.util.*;
 
 public class problema604 {
-	public static void main(String [] args) {
+	public static void main(String [] args) { //PERFECTO
 		
 		Scanner input = new Scanner(System.in);
 		
