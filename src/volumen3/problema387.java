@@ -2,9 +2,9 @@ package volumen3;
 
 import java.util.*;
 
-public class problema387 {
+public class problema387 { //PERFECTO - ACCEPTED
 
-    public static void main(String[] args) { //PERFECTO - ACCEPTED
+    public static void main(String[] args) { 
 
         Scanner input = new Scanner(System.in);
 
