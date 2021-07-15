@@ -4,7 +4,7 @@ import java.util.*;
 
 public class problema387 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { //PERFECTO - ACCEPTED
 
         Scanner input = new Scanner(System.in);
 
