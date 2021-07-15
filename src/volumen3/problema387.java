@@ -2,7 +2,7 @@ package volumen3;
 
 import java.util.*;
 
-public class problema387 { //PERFECTO - ACCEPTED
+public class problema387 { 
 
     public static void main(String[] args) { 
 
