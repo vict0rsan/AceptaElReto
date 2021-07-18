@@ -1,48 +1,49 @@
-
 package volumen1;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
-public class problema141 {   //me salta error de stackemptyexception y no entiendo por que????
+public class problema141 { //PERFECTO - RUN TIME ERROR
+
     public static void main(String[]args){
+
         Scanner input = new Scanner(System.in);
-        System.out.println("Introduce casos de prueba: ");
-        int casos = input.nextInt();
-        input.nextLine();
-        Stack pila = new Stack();
-        pila.push('E'); //trate de arreglarlo asi para que nunca este vacio pero no funciono
-        
-        
-        for(int i = 0; i < casos; i++){
-            System.out.println("Introduce texto a compobar");
-            String datos = input.nextLine();
-            for(int j = 0; j<datos.length(); j++){
-                
-                if(datos.charAt(j) == '(' || datos.charAt(j) == '{' || datos.charAt(j) == '[' ){
-                    pila.push(datos.charAt(j));
-                    
-                    System.out.println("letra en j: "+datos.charAt(j));
-                }
-                if((datos.charAt(j) == ')' && (Character) pila.peek() == '(' ) || 
-                   (datos.charAt(j) == '}' && (Character) pila.peek() == '{' ) ||
-                   (datos.charAt(j) == ']' && (Character) pila.peek() == '[' )){
-                     pila.pop();
-                }
-                else 
+
+        Stack <Character> pila = new Stack();
+
+        pila.push('.'); //para que no me de un error si intenta acceder a la pila vacia
+
+        String texto = input.nextLine();
+
+        boolean correcto = true;
+
+        for(int i = 0; i < texto.length(); i++){
+
+            if(texto.charAt(i) == '(' || texto.charAt(i) == '[' || texto.charAt(i) == '{')
+                pila.push(texto.charAt(i));
+
+            if(texto.charAt(i) == ')'){
+                if(pila.pop() != '('){
+                    correcto = false;
                     break;
-                
-                    
+                }
             }
-            
-            pila.pop();
-            
-             
-            if(pila.empty())
-                System.out.println("YES");
-            else
-                System.out.println("NO");
-            
+            if(texto.charAt(i) == ']'){
+                if(pila.pop() != '['){
+                    correcto = false;
+                    break;
+                }
+            }
+            if(texto.charAt(i) == '}'){
+                if(pila.pop() != '{'){
+                    correcto = false;
+                    break;
+                }
+            }
+
         }
+
+        System.out.println(correcto ? "YES" : "NO");
+
+                
     }
     
 }
