@@ -3,7 +3,7 @@ package volumen1;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class problema100 { //PERFECTO ACCEPTADO
+public class problema100 { //PERFECTO - ACCEPTED
 
     public static void main(String[] args) {
 
