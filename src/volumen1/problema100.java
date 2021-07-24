@@ -1,105 +1,69 @@
 package volumen1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class problema100 {
+public class problema100 { //PERFECTO ACCEPTADO
 
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
-        System.out.println("Introduce how many cases you want to check ");
-        int casos = input.nextInt();
-        input.nextLine();
-        
 
-        for (int i = 0; i < casos; i++) {
-            int res = 0;
-            int contador = 0;
-            System.out.println("Introduce the number you want to analize: ");
-            String numero = input.nextLine();
-            
-            do {
-                if (Integer.parseInt(numero) == 6174) 
-                    break;
-                
-                if((aMayor(numero) == aMenor(numero)) && (numero.length() == 3) ){
-                    numero = numero + "0";
-                }
-                else if(aMayor(numero) == aMenor(numero)){
-                    contador = 8;
-                    break;
-                }
-                
-                res = (aMayor(numero) - aMenor(numero));
-                
-                    contador++;
-                    System.out.println("contador = " + contador);
-                
-                numero = Integer.toString(res);
-                
-            } while (res != 6174);
-            
-            System.out.println(contador);
-        }
-    }
+        char[] num;
+        int C = input.nextInt();
 
-    public static int aMayor(String s) {
-        int resultado;
-        int l = s.length();
-        char[] ch = new char[l];
-        String res = "";
+        while (C-- != 0) {
 
-        for (int i = 0; i < l; i++) {
-            ch[i] = s.charAt(i);
-        }
+            num = input.next().toCharArray();
 
-        for (int i = 0; i < ch.length - 1; i++) {
-            for (int j = 0; j < ch.length - 1; j++) {
-                char c1 = ch[j];
-                char c2 = ch[j + 1];
-                int n1 = Character.getNumericValue(c1);
-                int n2 = Character.getNumericValue(c2);
-                if (n1 < n2) {
-                    ch[j] = c2;
-                    ch[j + 1] = c1;
-                }
+            if (Integer.parseInt(new String(num)) == 6174) {
+                System.out.println( 0 );
+                continue;
             }
-        }
-        for (int i = 0; i < l; i++) {
-            res = res + ch[i];
-        }
-        resultado = Integer.parseInt(res);
 
-        return resultado;
-    }
+            int iterations = 1;
+            while (iterations < 8) {
 
-    public static int aMenor(String s) {
-        int resultado;
-        int l = s.length();
-        char[] ch = new char[l];
-        String res = "";
+                int desc = aMenor(num);
+                int asc  = aMayor(num);
+                int newNum = desc - asc;
 
-        for (int i = 0; i < l; i++) {
-            ch[i] = s.charAt(i);
-        }
-
-        for (int i = 0; i < ch.length - 1; i++) {
-            for (int j = 0; j < ch.length - 1; j++) {
-                char c1 = ch[j];
-                char c2 = ch[j + 1];
-                int n1 = Character.getNumericValue(c1);
-                int n2 = Character.getNumericValue(c2);
-                if (n1 > n2) {
-                    ch[j] = c2;
-                    ch[j + 1] = c1;
+                if (newNum == 6174) {
+                    break;
                 }
-            }
-        }
-        for (int i = 0; i < l; i++) {
-            res = res + ch[i];
-        }
-        resultado = Integer.parseInt(res);
 
-        return resultado;
+                num = String.valueOf(newNum).toCharArray();
+                iterations++;
+            }
+
+            System.out.println( iterations );
+        }
+
     }
 
+
+    public static int aMayor(char [] num) {
+        Arrays.sort(num);
+        return Integer.parseInt(new String(num));
+    }
+
+    public static int aMenor(char [] num) {
+        Arrays.sort(num);
+        reverse(num);
+        int n = Integer.parseInt(new String(num));
+        return (n / 1000 == 0) ? rellenaCeros(n) : n;
+    }
+
+    public static int rellenaCeros(int num){
+        if (num != 0 && num < 1000) return rellenaCeros(num * 10);
+        return num;
+    }
+
+    public static void reverse(char[] num) {
+        for (int i = 0; i < num.length / 2; i++) {
+            char temp = num[num.length - i - 1];
+            num[num.length - i - 1] = num[i];
+            num[i] = temp;
+        }
+    }
 }
