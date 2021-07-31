@@ -2,49 +2,39 @@ package volumen2;
 
 import java.util.Scanner;
 
-public class problema267 {
+public class problema267 { //PERFCTO - ACCEPTED
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        do {
-            System.out.println("Introduce lado 1: ");
-            int lado1 = input.nextInt();
-            System.out.println("Introduce lado 2: ");
-            int lado2 = input.nextInt();
-            System.out.println("Introduce distancia max: ");
-            int dmax = input.nextInt();
+        while(true) {
+
+            long lado1 = input.nextLong();
+            long lado2 = input.nextLong();
+            long dmax = input.nextLong();
 
             if (lado1 == 0 && lado2 == 0 && dmax == 0) {
                 break;
             }
 
-            int vallas = nVallas(lado1, lado2, dmax);
-            System.out.println("vallas:" + vallas);
+            long vallas = nVallas(lado1, lado2, dmax);
 
-        } while (true);
-
+            System.out.println(vallas);
+        }
     }
 
-    public static int nVallas(int lado1, int lado2, int dmax) {
+    public static long nVallas(long lado1, long lado2, long dmax) {
+
         int vallas = 4;
 
-        if (lado1 / dmax > 0 && lado1 % dmax != 0) {
-            vallas += (lado1 / dmax) * 2;
-           // System.out.println("No se debe ejecutar si % = 0: " + vallas);
-        } else if (lado1 / dmax > 0 && lado1 % dmax == 0) {
-            vallas += ((lado1 / dmax) - 1) * 2;
-            //System.out.println("Esto deberia de dar 4: " + vallas);
+        if(lado1 > dmax || lado2 > dmax){
+            if(lado1 > dmax && lado2 > dmax)
+                vallas += ((lado1-1)/dmax)*2 + ((lado2-1)/dmax)*2;
+            else if(lado1 > dmax)
+                vallas += ((lado1-1)/dmax)*2;
+            else if(lado2 > dmax)
+                vallas += ((lado2-1)/dmax)*2;
         }
-
-        if (lado2 / dmax > 0 && lado2 % dmax != 0) {
-            vallas += (lado1 / dmax) * 2;
-           // System.out.println("No se debe ejecutar si % = 0: " + vallas);
-        } else if (lado2 / dmax > 0 && lado2 % dmax == 0) {
-            vallas += ((lado1 / dmax) - 1) * 2;
-            //System.out.println("Esto deberia de dar 4: " + vallas);
-        }
-
         return vallas;
     }
 }
