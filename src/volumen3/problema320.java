@@ -2,7 +2,7 @@ package volumen3;
 import java.util.Scanner;
 
 
-public class problema320 { //no entiendo el enunciado
+public class problema320 { //HACER
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         int casos = s.nextInt();
