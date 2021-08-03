@@ -2,7 +2,7 @@ package volumen5;
 import java.util.*;
 
 
-public class problema545 { //probar despues (usar clases propias)
+public class problema545 { //POR RESOLVER
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         
