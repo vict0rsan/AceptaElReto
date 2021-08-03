@@ -2,7 +2,7 @@ package volumen5;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class problema543 {
+public class problema543 { //PERFECTO - ACCEPTED
 
     public static void main(String[] args) {
 
