@@ -1,9 +1,10 @@
 package volumen5;
 import java.util.Scanner;
 
+public class problema540 { //PERFECTO - ACCEPTED
 
-public class problema540 {
     public static void main(String[] args) {
+
         Scanner s = new Scanner(System.in);
         int casos = s.nextInt();
         
@@ -14,9 +15,6 @@ public class problema540 {
             int escalones_extra = s.nextInt();
             
             System.out.println((escalones_extra + pisos_subidos*escalones) + " " + (piso_vivienda*escalones+escalones_extra+pisos_subidos*escalones));
-            
         }
-        
     }
-    
 }
