@@ -1,9 +1,8 @@
-
 package volumen5;
-import java.util.*;
+import java.util.Scanner;
 
 public class problema582 {
-    public static void main(String[] args) { //ACEPTADO
+    public static void main(String[] args) { //PERFECTO - ACCEPTED
         
         Scanner s = new Scanner(System.in);
         
@@ -12,15 +11,12 @@ public class problema582 {
         s.nextLine();
         
         for(int i = 0; i < casos; i++){
-            
-            
+
             boolean correcto = true;
-            
             String campanadas = s.nextLine();
             
             if(campanadas.contains("ding"))
                 correcto = false;
-            
             
             String [] campanadas2 = campanadas.split(" ");
             
@@ -32,12 +28,6 @@ public class problema582 {
                 System.out.println("MARISA NARANJO");
             else
                 System.out.println("TARDE");
-            
-            
-            
-            
-            
         }
     }
-    
 }
