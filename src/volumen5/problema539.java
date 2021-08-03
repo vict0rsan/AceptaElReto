@@ -1,21 +1,26 @@
 package volumen5;
 import java.util.Scanner;
 
+public class problema539 { //PERFECTO - ACCEPTED
 
-public class problema539 {
     public static void main(String[] args) {
          
         Scanner input = new Scanner(System.in);
-        
-        while(input.hasNext()){ //que lee en la primera iteracion el hasNext()??? por que esta mal hotiaputa ya bro
+
+        while(input.hasNext()) {
             int dato1 = input.nextInt();
             int dato2 = input.nextInt();
-            
-            System.out.println(((dato2 - dato1) % 10 == 9)?"FELIZ DECADA NUEVA":"TOCA ESPERAR");
+            decadaNueva(dato1, dato2);
         }
-        
     }
-    
+
+    public static void decadaNueva(int dato1, int dato2){
+        int resta = dato2 - dato1;
+        if(resta % 10 == 9 )
+            System.out.println("FELIZ DECADA NUEVA");
+        else
+            System.out.println("TOCA ESPERAR");
+    }
 }
     
     
