@@ -1,71 +1,62 @@
 package volumen1;
 
-import java.util.Collections;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
 
-public class problema122 { //PERFECTO - RUN TIME ERROR
+public class problema122 {
 
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-
-        List<Integer> alturas = new ArrayList<>();
-        List<Integer> posicionesIniciales = new ArrayList<>();
-        List<Integer> tramosPlanos = new ArrayList<>();
+        int n1;
+        int n2;
+        int pos = 0;
+        int kl = 0;
+        int tempKl = 0;
+        int tempPlanas;
+        int planas = 0;
+        boolean comen;
+        boolean first;
 
         while (true) {
 
-            int altura = input.nextInt();
+            comen = false;
+            first = false;
+            tempPlanas = -1;
 
-            if (altura == -1)
+            n1 = input.nextInt();
+
+            if (n1 == -1)
                 break;
 
-            int posicionInicial = 0;
-            int tramosPlano = 0;
-            boolean planicie = false;
-            boolean posActivada = false;
+            while (true) {
 
-            while (altura != -1) {
-                alturas.add(altura);
-                altura = input.nextInt();
-            }
+                n2 = input.nextInt();
 
-            for (int i = 0; i < alturas.size() - 1; i++) {
-                if (alturas.get(i) == alturas.get(i + 1)) {
-                    planicie = true;
-                    tramosPlano++;
-                    if (posActivada == false) {
-                        posicionInicial = i;
-                        posicionesIniciales.add(posicionInicial);
-                        posActivada = true;
+                if (n2 == -1)
+                    break;
+
+                if (n1 == n2) {
+                    comen = true;
+                    if (!first) {
+                        tempPlanas = 0;
+                        first = true;
+                        tempKl = pos;
                     }
-                    if (i == alturas.size() - 2)
-                        tramosPlanos.add(tramosPlano);
-
-                } else {
-                    if (posicionInicial != 0) {
-                        tramosPlanos.add(tramosPlano);
-                        tramosPlano = 0;
-                        posicionInicial = 0;
-                        posActivada = false;
+                    tempPlanas++;
+                    if (tempPlanas > planas) {
+                        planas = tempPlanas;
+                        kl = tempKl;
                     }
-                }
+                } else
+                    first = false;
+                n1 = n2;
+                pos++;
             }
 
-            if (planicie) {
-                tramosPlano = Collections.max(tramosPlanos);
-                int posicion = tramosPlanos.indexOf(tramosPlano);
-                posicionInicial = posicionesIniciales.get(posicion);
-                System.out.println(posicionInicial + " " + tramosPlano);
-            }
-            else
+            if (!comen)
                 System.out.println("HOY NO COMEN");
-
-            alturas.clear();
-            posicionesIniciales.clear();
-            tramosPlanos.clear();
+            else
+                System.out.println(kl + " " + planas);
         }
     }
 }
