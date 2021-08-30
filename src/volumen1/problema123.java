@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class problema123 {
 
-    public static void main(String[] args) { //PERFECTO - WRONG ANSWER SIN MOTIVO
+    public static void main(String[] args) { //PERFECTO - ACCEPTED
 
         Scanner input = new Scanner(System.in);
 
@@ -27,17 +27,18 @@ public class problema123 {
             String[] datos = texto.split(" ");
             String verbo = datos[0];
             String tiempoVerbal = datos[1];
+            String terminacion = verbo.substring(verbo.length()-2);
 
             if (tiempoVerbal.equals("T"))
                 break;
 
             String raiz = verbo.substring(0, verbo.length() - 2);
 
-            if (verbo.contains("ar"))
+            if (terminacion.equals("ar"))
                 ar = true;
-            else if (verbo.contains("er"))
+            else if (terminacion.equals("er"))
                 er = true;
-            else
+            else if (terminacion.equals("ir"))
                 ir = true;
 
             String[] res = new String[6];
