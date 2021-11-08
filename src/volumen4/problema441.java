@@ -1,38 +1,39 @@
 package volumen4;
 
+import java.math.BigInteger;
 import java.util.*;
 
-public class problema441 {
+public class problema441 { //PERFECT - ACCEPTED
 
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         List<Character> list = new ArrayList();
 
-        while (s.hasNext()) {
-            int contador = 0;
-            String numero = s.nextLine();
-            numero = numero.replaceAll("\\p{Punct}", "");
-            int num = Integer.parseInt(numero);
-            num += 1;
-            numero = Integer.toString(num);
+        while (input.hasNext()) {
+            String stringNumber = input.nextLine();
+            String stringNumberFormated = stringNumber.replace(".", "");
+            BigInteger number = new BigInteger(stringNumberFormated);
+            BigInteger increasedNumber = number.add(BigInteger.ONE);
+            String stringIncreasedNumber = increasedNumber.toString();
 
-            for (int i = 0; i < numero.length(); i++) {
-                list.add(numero.charAt(i));
-            }
-            for (int i = list.size()-1; i >= 0; i--) {
-                contador++;
-                if (contador % 3 == 0 || list.listIterator().hasPrevious()) {
+            for(int i = 0; i < stringIncreasedNumber.length(); i++)
+                list.add(stringIncreasedNumber.charAt(i));
+
+            for(int i = list.size()-1, counter = 1; i >= 0; i--){
+                if(counter%3==0 && i > 0)
                     list.add(i, '.');
-                }
+
+                counter++;
             }
 
-            for (char c : list) {
-                System.out.print(c);
-            }
-            System.out.println("");
+            String formatedResult = "";
+            for(int i = 0; i < list.size(); i++)
+                formatedResult+=list.get(i);
+
+            System.out.println(formatedResult);
             list.clear();
         }
-
     }
-
 }
+
+
