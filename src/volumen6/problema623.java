@@ -3,7 +3,7 @@ package volumen6;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class problema623 {
+public class problema623 { //PERFECT - ACCEPTED
 
     public static void main(String[] args) {
 
